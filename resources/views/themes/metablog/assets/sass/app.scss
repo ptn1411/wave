@@ -1,0 +1,82 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+/*
+   * Fonts Name: Plus Jakarta Sans
+   * Fonts URL: https://fonts.google.com/specimen/Plus+Jakarta+Sans
+   *
+   * Fonts Name:  Source Serif Pro
+   * Fonts URL: https://fonts.google.com/specimen/Source+Serif+Pro
+   *
+   * Fonts Name:  Work Sans
+   * Fonts URL: https://fonts.google.com/specimen/Work+Sans
+   *
+   * Fonts Name:  Inter
+   * Fonts URL: https://fonts.google.com/specimen/Inter
+   *
+   * Fonts Name:  Roboto
+   * Fonts URL: https://fonts.google.com/specimen/Roboto
+   *
+   * Fonts Name:  Roboto Slab
+   * Fonts URL: https://fonts.google.com/specimen/Roboto+Slab
+*/
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap");
+
+@layer base {
+    /*   all heading Work Sans */
+    h1,
+    h2,
+    h3 {
+        font-family: "Work Sans";
+        font-weight: 600;
+    }
+    h4,
+    h5,
+    h6 {
+        font-family: "Work Sans";
+        font-weight: 500;
+    }
+    p,
+    span,
+    a,
+    li,
+    td,
+    th,
+    input,
+    textarea,
+    select,
+    button {
+        font-family: "Work Sans";
+        font-weight: 400;
+    }
+
+    /*   all body text Source Sans Pro */
+    body {
+        font-family: var "Source Serif Pro";
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    footer {
+        font-family: var "Plus Jakarta Sans";
+    }
+}
+
+.line-clam-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+}
+
+.line-clam-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+}
