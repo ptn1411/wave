@@ -1,51 +1,90 @@
 @extends('theme::layouts.app')
 
 @section('content')
-<div class="max-w-4xl px-5 mx-auto mt-10 lg:px-0">
-    <a href="{{ route('wave.blog') }}"
-        class="flex items-center mb-6 font-mono text-sm font-bold cursor-pointer text-wave-500">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
-            </path>
-        </svg>
-        back to the blog
-    </a>
+<div class="text-sm breadcrumbs py-8">
+    <ul>
+        <li>
+            <a href="{{ route('wave.home') }}" class="text-base-content">Home</a>
+        </li>
+        <li>
+            <a href="{{ route('wave.blog.category', $post->category->slug) }}"
+                class="text-base-content">{{ $post->category->name }}</a>
+        </li>
+        <li class="text-base-content/60">{{ $post->title }}</li>
+    </ul>
 </div>
 <article x-data="viewTracker()" x-init="init()" id="post-{{ $post->id }}"
-    class="max-w-4xl px-5 mx-auto prose prose-xl lg:prose-2xl lg:px-0">
+    class="flex flex-col lg:grid lg:grid-cols-12 gap-8 items-start">
 
     <meta property="name" content="{{ $post->title }}">
     <meta property="author" typeof="Person" content="admin">
     <meta property="dateModified" content="{{ Carbon\Carbon::parse($post->updated_at)->toIso8601String() }}">
     <meta class="uk-margin-remove-adjacent" property="datePublished"
         content="{{ Carbon\Carbon::parse($post->created_at)->toIso8601String() }}">
+    <div class="col-span-12 lg:col-span-8">
+        <div class="py-5">
+            <div class="w-fit text-white px-2.5 py-1 bg-primary text-xs md:text-sm rounded-md mb-2 md:mb-4">
+                {{ $post->category->name }}
+            </div>
+            <h3 class="text-base-content font-semibold text-xl md:text-2xl lg:text-4xl leading-7 md:leading-10">
+                {{ $post->title }}</h3>
+            <div class="mt-3 md:mt-6 flex items-center gap-5 text-base-content/60">
+                <div class="flex items-center gap-3">
+                    <div class="avatar">
+                        <div class="w-9 rounded-full">
+                            <img src="{{ $post->user->avatar() ?? 'https://placehold.it/100x100' }}" alt="avatar" />
+                        </div>
+                    </div>
+                    <a href="{{ '/@' . $post->user->username }}"
+                        class="text-xs md:text-base font-medium hover:text-primary transition hover:duration-300">{{ $post->user->name }}</a>
+                </div>
+                <p class="text-xs md:text-base">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}
+                </p>
+            </div>
+        </div>
+        <div class="mt-8">
+            <img width="800" height="462" class="rounded-xl w-full"
+                src="{{ $post->image() ?? 'https://placehold.it/800x462' }}" alt="{{ $post->title }}"
+                srcset="{{ $post->image() }}">
 
-    <div class="max-w-4xl mx-auto mt-6">
-
-        <h1 class="flex flex-col leading-none">
-            <span>{{ $post->title }}</span>
-            <span class="mt-10 text-base font-normal">Written on <time
-                    datetime="{{ Carbon\Carbon::parse($post->created_at)->toIso8601String() }}">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</time>.
-                Posted in <a href="{{ route('wave.blog.category', $post->category->slug) }}"
-                    rel="category">{{ $post->category->name }}</a>.</span>
-        </h1>
-
-
+        </div>
+        <div class="flex items-center justify-center my-8 font-work">
+            <div class="py-4 bg-base-content/10 text-base-content/60 text-center rounded-xl w-11/12">
+                <p class="text-sm">Advertisement</p>
+                <h6 class="text-xl font-semibold">You can place ads</h6>
+                <p class="text-lg">750x100</p>
+            </div>
+        </div>
+        <div class="prose max-w-4xl mx-auto font-serif">
+            {!! $post->body !!}
+        </div>
+        <div class="flex items-center justify-center my-8 font-work">
+            <div class="py-4 bg-base-content/10 text-base-content/60 text-center rounded-xl w-11/12">
+                <p class="text-sm">Advertisement</p>
+                <h6 class="text-xl font-semibold">You can place ads</h6>
+                <p class="text-lg">750x100</p>
+            </div>
+        </div>
     </div>
-
-    <div class="relative">
-        <img class="w-full h-auto rounded-lg" src="{{ $post->image() }}" alt="{{ $post->title }}"
-            srcset="{{ $post->image() }}">
+    <div class="col-span-12 lg:col-span-4 flex flex-col gap-5 justify-center order-last lg:order-none">
+        @include('theme::partials.home-post-latest-sidebar')
+        @include('theme::partials.home-post-category-sidebar')
+        <div
+            class="grid items-center justify-center bg-base-content/10 rounded-xl min-h-[360px] max-w-[250px] w-full mx-auto">
+            <div class="text-base-content/60 text-center font-work">
+                <p class="text-sm">Advertisement</p>
+                <p class="text-xl font-semibold">You can place ads</p>
+                <p class="text-lg">250x360</p>
+            </div>
+        </div>
     </div>
-
-    <div class="max-w-4xl mx-auto">
-        {!! $post->body !!}
-    </div>
-
 </article>
+<button
+    class="scroll-to-top fixed bottom-16 right-5 w-12 h-12 bg-black text-white border-none rounded-full cursor-pointer z-1000 flex justify-center items-center shadow hover:bg-gray-600">
+    ↑
+</button>
 <div class="max-w-4xl mx-auto mt-6 pb-20">
-    <div id="disqus_thread"></div>
+    <div id="disqus_thread" class="disqus-comments bg-base-100 p-4 rounded shadow-md"></div>
     <script>
         /**
              *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -56,6 +95,11 @@
             this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
             */
+
+        //     var disqus_config = function () {
+        //     this.page.url = "{{ url()->current() }}";  // URL của trang hiện tại
+        //     this.page.identifier = '{{ request()->path() }}'; // Identifier duy nhất cho bài viết
+        // };
             (function() { // DON'T EDIT BELOW THIS LINE
                 var d = document,
                     s = d.createElement('script');
@@ -93,7 +137,7 @@
 
                 incrementPostView() {
                     if (!this.viewApiCalled) {
-                        axios.post(`/api/posts/${this.postId}/increment-view`, {
+                        axios.post(`/api/views/${this.postId}/increment-view`, {
                                 // Dữ liệu gửi đi nếu cần thiết
                             }, {
                                 headers: {

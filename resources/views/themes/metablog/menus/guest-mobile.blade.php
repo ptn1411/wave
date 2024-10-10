@@ -23,13 +23,7 @@
                             stroke-linecap="round" />
                     </svg>
                 </div>
-                <a class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300 font-work"
-                    href="#">1</a>
-                <a class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300 font-work"
-                    href="#">2</a>
-                <a class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300 font-work"
-                    href="#">3</a>
-
+                {{ menu('guest-menu', 'guest_mobile_menu') }}
             </div>
         </div>
     </div>

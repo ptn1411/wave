@@ -1,6 +1,7 @@
 @extends('theme::layouts.app')
 
 @section('content')
+
 <section class="py-4 bg-base-100 text-center font-work">
     <h1 class="text-base-content text-3xl font-semibold">Categories</h1>
     <ul class="menu menu-vertical mt-2 lg:menu-horizontal bg-base-200 rounded-box">
@@ -46,8 +47,8 @@
                             </div>
                         </div>
                         <h5>
-                            <a href="/"
-                                class="text-base font-medium hover:text-primary transition hover:duration-300">Jason
+                            <a href="{{ '/@' . $post->user->username }}"
+                                class="text-base font-medium hover:text-primary transition hover:duration-300">
                                 {{ $post->user->name }}</a>
                         </h5>
                     </div>

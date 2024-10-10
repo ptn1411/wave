@@ -1,4 +1,4 @@
-<div class="flex flex-col md:flex-row gap-6">
+<div class="flex flex-col md:flex-row gap-6 mt-40">
     @foreach ($posts as $index => $post)
     @if ($index == 0)
     <!-- start large banner card -->
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <h5>
-                            <a href="#"
+                            <a href="{{ '/@' . $post->user->username }}"
                                 class="text-neutral-content font-medium hover:text-primary transition hover:duration-300">
                                 {{ $post->user->name }}
                             </a>

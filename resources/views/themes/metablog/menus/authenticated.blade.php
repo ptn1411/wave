@@ -34,30 +34,7 @@
         </a>
     </div>
     <!--	Navbar section	-->
-    <nav class="hidden xl:block col-span-6">
-        <div class=" w-full flex items-center justify-center gap-10">
-            <a href='/'
-                class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300">
-                Home
-            </a>
-            <a href="/blog"
-                class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300">
-                Blog
-            </a>
-            <a href="../single-post/index.html"
-                class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300">
-                Single Post
-            </a>
-            <a href="../author/index.html"
-                class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300">
-                Pages
-            </a>
-            <a href="/contact-us/index.html"
-                class="link link-hover text-base text-base-content/80 hover:text-primary transition hover:duration-300">
-                Contact
-            </a>
-        </div>
-    </nav>
+    {{ menu('authenticated-menu', 'authenticated_menu') }}
 
     <div class="flex items-center justify-end gap-6 col-span-9 xl:col-span-3">
         <!--   Search section	-->

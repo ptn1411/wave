@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                                 <h5>
-                                    <a href="#"
+                                    <a href="{{ '/@' . $post->user->username }}"
                                         class="text-xs md:text-base font-medium hover:text-primary transition hover:duration-300">
                                         {{ $post->user->name }}
                                     </a>
@@ -153,7 +153,7 @@
                                         </div>
                                     </div>
                                     <h5>
-                                        <a href="#"
+                                        <a href="{{ '/@' . $post->user->username }}"
                                             class="text-xs md:text-base font-medium hover:text-primary transition hover:duration-300">
                                             {{ $post->user->name }}
                                         </a>

@@ -52,7 +52,7 @@
 <body>
     @include('theme::partials.header')
 
-    <main class="container mx-auto px-5 sm:px-0">
+    <main class="container mx-auto px-5 sm:px-0 main-content">
         @yield('content')
     </main>
 
