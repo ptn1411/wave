@@ -8,6 +8,7 @@ module.exports = {
         "./assets/**/*.js",
         "./assets/**/*.{ts,tsx}",
         "./assets/js/components/**/*.{ts,tsx}",
+        "../../*.php",
     ],
     theme: {
         screens: {
@@ -26,8 +27,11 @@ module.exports = {
     },
 
     // add daisyUI plugin
-    plugins: [ require("@tailwindcss/forms"),
-        require("@tailwindcss/typography"),require("daisyui")],
+    plugins: [
+        require("@tailwindcss/forms"),
+        require("@tailwindcss/typography"),
+        require("daisyui"),
+    ],
 
     // daisyUI config (optional)
     daisyui: {
@@ -87,7 +91,6 @@ module.exports = {
                     error: "#ff5724",
                 },
             },
-
         ],
         base: true,
         utils: true,

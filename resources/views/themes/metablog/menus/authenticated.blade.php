@@ -91,18 +91,77 @@
                 </ul>
             </div>
         </div>
-        <div class="flex items-center justify-center gap-2 pb-2 border-b border-primary cursor-pointer">
-            <svg class="w-5 h-5" stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 1024 1024"
-                height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 110.8V792H136V270.8l-27.6-21.5 39.3-50.5 42.8 33.3h643.1l42.8-33.3 39.3 50.5-27.7 21.5zM833.6 232L512 482 190.4 232l-42.8-33.3-39.3 50.5 27.6 21.5 341.6 265.6a55.99 55.99 0 0 0 68.7 0L888 270.8l27.6-21.5-39.3-50.5-42.7 33.2z">
-                </path>
-            </svg>
-            <h6 class="text-base-content/80 text-base font-sans">
-                SUBSCRIBE
-            </h6>
-        </div>
+        @include('theme::partials.notifications')
+        <div @click.away="open = false" class="relative flex items-center h-full ml-3" x-data="{ open: false }">
+            <div>
+                <button @click="open = !open"
+                    class="flex text-sm transition duration-150 ease-in-out border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300"
+                    id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open"
+                    aria-expanded="true">
+                    <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->avatar() . '?' . time() }}"
+                        alt="{{ auth()->user()->name }}'s Avatar">
+                </button>
+            </div>
 
+            <div x-show="open" x-transition:enter="duration-100 ease-out scale-95"
+                x-transition:enter-start="opacity-50 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition duration-50 ease-in scale-100"
+                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                class="absolute top-0 right-0 w-56 mt-20 origin-top-right transform rounded-xl" x-cloak>
+
+                <div class="bg-white border border-gray-100 shadow-md rounded-xl" role="menu"
+                    aria-orientation="vertical" aria-labelledby="options-menu">
+                    <a href="{{ route('wave.profile', auth()->user()->username) }}"
+                        class="block px-4 py-3 text-gray-700 hover:text-gray-800">
+
+                        <span class="block text-sm font-medium leading-tight truncate">
+                            {{ auth()->user()->name }}
+                        </span>
+                        <span class="text-xs leading-5 text-gray-600">
+                            View Profile
+                        </span>
+                    </a>
+                    @impersonating
+                    <a href="{{ route('impersonate.leave') }}"
+                        class="block px-4 py-2 text-sm leading-5 text-blue-900 border-t border-gray-100 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:bg-blue-200">Leave
+                        impersonation</a>
+                    @endImpersonating
+                    <div class="border-t border-gray-100"></div>
+                    <div class="py-1">
+
+                        <div class="block px-4 py-1">
+                            <span
+                                class="inline-block px-2 my-1 -ml-1 text-xs font-medium leading-5 text-gray-600 bg-gray-200 rounded">{{ auth()->user()->role->display_name }}</span>
+                        </div>
+                        @trial
+                        <a href="{{ route('wave.settings', 'plans') }}"
+                            class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">Upgrade
+                            My Account</a>
+                        @endtrial
+                        @if( !auth()->guest() && auth()->user()->can('browse_admin') )
+                        <a href="{{ route('voyager.dashboard') }}"
+                            class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"><i
+                                class="fa fa-bolt"></i> Admin</a>
+                        @endif
+                        <a href="{{ route('wave.profile', auth()->user()->username) }}"
+                            class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">My
+                            Profile</a>
+                        <a href="{{ route('wave.settings') }}"
+                            class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">Settings</a>
+
+                    </div>
+                    <div class="border-t border-gray-100"></div>
+                    <div class="py-1">
+                        <a href="{{ route('wave.logout') }}"
+                            class="block w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                            role="menuitem">
+                            Sign out
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <!--	Mobile Nav	-->
         <svg @click="sidebarOpen = true" class="cursor-pointer w-8 h-8 xl:hidden text-base-content" width="20"
             height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Wave\Category;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -60,6 +62,12 @@ class AppServiceProvider extends ServiceProvider
             }
 
             return true;
+        });
+        View::composer('*', function ($view) {
+            $categories = Category::latest() // Lấy các category mới nhất
+                ->take(6) // Giới hạn kết quả là 6 category
+                ->get();
+            $view->with('categories_footer', $categories);
         });
     }
 

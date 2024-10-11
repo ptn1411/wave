@@ -80,26 +80,6 @@
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
 }
-.btn {
-    --tw-bg-opacity: 1;
-    background-color: hsl(
-        var(--b1) / var(--tw-bg-opacity)
-    ); /* Sử dụng màu trắng từ theme */
-    --tw-text-opacity: 1;
-    color: hsl(var(--p) / var(--tw-text-opacity)); /* Màu chữ là màu primary */
-}
-
-.btn:hover,
-.btn-active {
-    --tw-border-opacity: 1;
-    border-color: hsl(
-        var(--p) / var(--tw-border-opacity)
-    ); /* Màu viền là màu primary */
-    --tw-bg-opacity: 1;
-    background-color: hsl(
-        var(--pf) / var(--tw-bg-opacity)
-    ); /* Màu nền là màu primary-focus khi hover */
-}
 
 .main-content {
     margin-top: 130px; /* Điều chỉnh khoảng cách cho phù hợp với chiều cao của header */
@@ -125,4 +105,7 @@
     background-color: var(
         --tw-bg-hover
     ); /* Sử dụng biến cho màu nền khi hover */
+}
+.header-hidden {
+    display: none;
 }

@@ -81,6 +81,8 @@
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#branding">Branding</a></li>
         <li><a data-toggle="tab" href="#homepage">Homepage</a></li>
+        <li><a data-toggle="tab" href="#contactpage">Contact</a></li>
+        <li><a data-toggle="tab" href="#footerpage">Footer</a></li>
         <li><a data-toggle="tab" href="#themeinfo">Theme Info</a></li>
     </ul>
 
@@ -96,15 +98,29 @@
 
         <div id="homepage" class="tab-pane">
 
-            {!! theme_field('text', 'home_headline', 'Homepage Headline') !!}
-            {!! theme_field('text', 'home_subheadline', 'Homepage Subheadline') !!}
-            {!! theme_field('text_area', 'home_description', 'Homepage Copy Below Subheadline') !!}
-            {!! theme_field('text', 'home_cta', 'Homepage CTA Text') !!}
-            {!! theme_field('text', 'home_cta_url', 'Homepage CTA URL') !!}
-            {!! theme_field('image', 'home_promo_image', 'Homepage Promo Image') !!}
+            {!! theme_field('text', 'home_ads_url', 'Homepage URL') !!}
+            {!! theme_field('image', 'home_ads_image', 'Homepage ADS') !!}
+
+            {!! theme_field('text', 'home_ads_url2', 'Homepage URL 2') !!}
+            {!! theme_field('image', 'home_ads_image2', 'Homepage ADS 2') !!}
+
+            {!! theme_field('text', 'home_ads_url3', 'Homepage URL 3') !!}
+            {!! theme_field('image', 'home_ads_image3', 'Homepage ADS 3') !!}
 
         </div>
+        <div id="contactpage" class="tab-pane">
+            {!! theme_field('text', 'contact_headline', 'Contact Headline') !!}
+            {!! theme_field('text_area', 'contact_description', 'Contact description') !!}
+            {!! theme_field('text', 'contact_address', 'Address') !!}
+            {!! theme_field('text', 'contact_contact', 'Contact') !!}
 
+        </div>
+        <div id="footerpage" class="tab-pane">
+            {!! theme_field('text_area', 'footer_description', 'Footer description') !!}
+            {!! theme_field('text', 'contact_contact_email', 'Contact email') !!}
+            {!! theme_field('text', 'contact_contact_phone', 'Contact phone') !!}
+
+        </div>
         <div id="themeinfo" class="tab-pane">
 
             <h3>TailwindCSS</h3>

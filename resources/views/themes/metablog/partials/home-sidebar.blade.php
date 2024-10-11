@@ -101,13 +101,20 @@
 
 
             <!-- Advertisement Component -->
+
             <div class="my-16 w-full">
-                <div class="py-4 bg-base-content/10 text-base-content/60 text-center rounded-xl font-work">
-                    <p class="text-sm">Advertisement</p>
-                    <p class="text-xl font-semibold">You can place ads</p>
-                    <p class="text-lg">750x100</p>
+                @if (theme('home_ads_image'))
+                <div class="py-4 rounded-xl">
+                    <a href="{{ theme('home_ads_url') }}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ Voyager::image(theme('home_ads_image')) }}" alt="Advertisement"
+                            style="width: 750px; height: 100px;" class="mx-auto my-4">
+                    </a>
+
                 </div>
+                @endif
             </div>
+
+
 
             <!-- Post Magnific Overlay Two Component: Lastest Post -->
             <div class="font-work flex items-center justify-between mb-8">
@@ -211,13 +218,19 @@
     </div>
     </div>
     <!-- Advertisement Component -->
-    <div class="my-16">
-        <div class="py-4 bg-base-content/10 text-base-content/60 text-center rounded-xl font-work">
-            <p class="text-sm">Advertisement</p>
-            <p class="text-xl font-semibold">You can place ads</p>
-            <p class="text-lg">750x100</p>
+
+    <div class="my-16 w-full">
+        @if (theme('home_ads_image2'))
+        <div class="py-4 rounded-xl">
+            <a href="{{ theme('home_ads_url2') }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ Voyager::image(theme('home_ads_image2')) }}" alt="Advertisement"
+                    style="width: 750px; height: 100px;" class="mx-auto my-4">
+            </a>
+
         </div>
+        @endif
     </div>
+
     </div>
 
     <!---------- Sidebar Component --------->
@@ -228,14 +241,14 @@
         <!------- Start sidebar category ------>
         @include('theme::partials.home-post-category-sidebar')
         <!------ Advertisement Vertical Component  ------>
-        <div
-            class="grid items-center justify-center bg-base-content/10 rounded-xl  min-h-[360px] max-w-[250px] w-full mx-auto">
-            <div class="text-base-content/60 text-center font-work ">
-                <p class="text-sm">Advertisement</p>
-                <p class="text-xl font-semibold">You can place ads</p>
-                <p class="text-lg">250x360</p>
-            </div>
+        @if (theme('home_ads_image2'))
+        <div class="grid items-center justify-center rounded-xl  min-h-[360px] max-w-[250px] w-full mx-auto">
+            <a href="{{ theme('home_ads_url3') }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ Voyager::image(theme('home_ads_image3')) }}" alt="Advertisement"
+                    style="width: 250px; height: 360px;" class="mx-auto my-4">
+            </a>
         </div>
+        @endif
     </div>
     </div>
 

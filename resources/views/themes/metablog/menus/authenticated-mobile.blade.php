@@ -13,7 +13,8 @@
                 </div>
 
                 <div class="px-2 py-2 rounded-md flex items-center gap-4 border md:hidden">
-                    <input type="text" class="outline-none text-base w-full bg-base-200 text-base-content"
+                    <input type="text"
+                        class="outline-none text-base input w-full max-w-full bg-base-200 text-base-content"
                         placeholder="Search" />
                     <svg width="16" height="16" view-box="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
