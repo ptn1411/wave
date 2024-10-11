@@ -1,5 +1,5 @@
 <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-base-100 shadow">
-    <div class="container mx-auto font-work p-4 mb-2" x-data="{ sidebarOpen: false }">
+    <div class="container mx-auto font-work mb-2" x-data="{ sidebarOpen: false }">
         @if (auth()->guest())
         @include('theme::menus.guest')
         @include('theme::menus.guest-mobile')

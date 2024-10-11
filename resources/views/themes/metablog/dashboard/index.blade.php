@@ -1,7 +1,6 @@
-@extends('theme::layouts.dashboard')
+@extends('theme::layouts.app')
 
 
 @section('content')
 <div id="root"></div>
 @endsection
-
