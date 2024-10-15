@@ -109,3 +109,30 @@
 .header-hidden {
     display: none;
 }
+.tab-content {
+    display: none;
+}
+
+input[type="radio"]:checked + label + .tab-content {
+    display: block;
+}
+.draggable-button {
+    border-radius: 50%;
+    position: fixed; /* Thay đổi từ absolute sang fixed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    user-select: none; /* Ngăn chặn chọn text khi kéo */
+    z-index: 1000; /* Đảm bảo nút nằm trên cùng */
+}
+
+.draggable-button:active {
+    cursor: grabbing;
+}
+
+.draggable-button span {
+    pointer-events: none; /* Đảm bảo không bị ảnh hưởng khi kéo */
+}

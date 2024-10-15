@@ -25,7 +25,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $links = Link::orderBy('created_at', 'DESC')->paginate(10);
+        $links = Link::with('collections')->paginate(12);
+
         return view('theme::dashboard.index', compact('links'));
     }
 }

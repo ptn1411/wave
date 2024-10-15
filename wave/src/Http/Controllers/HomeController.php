@@ -40,6 +40,9 @@ class HomeController extends Controller
             ->take(3) // Giới hạn lấy 3 bài
             ->get();
 
+        if ($weeklyPosts->isEmpty()) {
+            $weeklyPosts = Post::inRandomOrder()->take(3)->get();
+        }
         $latestPosts = Post::latest() // Sắp xếp theo created_at giảm dần
             ->take(4) // Lấy 3 bài
             ->get();

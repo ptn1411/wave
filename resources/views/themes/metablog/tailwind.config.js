@@ -4,6 +4,7 @@ module.exports = {
     content: [
         "./**/*.php",
         "./*.php",
+        "./**/**/*.php",
         "./assets/**/*.scss",
         "./assets/**/*.js",
         "./assets/**/*.{ts,tsx}",

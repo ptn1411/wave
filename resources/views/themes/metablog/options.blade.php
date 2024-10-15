@@ -81,6 +81,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#branding">Branding</a></li>
         <li><a data-toggle="tab" href="#homepage">Homepage</a></li>
+        <li><a data-toggle="tab" href="#postpage">Post</a></li>
         <li><a data-toggle="tab" href="#contactpage">Contact</a></li>
         <li><a data-toggle="tab" href="#footerpage">Footer</a></li>
         <li><a data-toggle="tab" href="#themeinfo">Theme Info</a></li>
@@ -106,6 +107,18 @@
 
             {!! theme_field('text', 'home_ads_url3', 'Homepage URL 3') !!}
             {!! theme_field('image', 'home_ads_image3', 'Homepage ADS 3') !!}
+
+        </div>
+        <div id="postpage" class="tab-pane">
+
+            {!! theme_field('text', 'post_ads_url', 'Post URL') !!}
+            {!! theme_field('image', 'post_ads_image', 'Post ADS') !!}
+
+            {!! theme_field('text', 'post_ads_url2', 'Post URL 2') !!}
+            {!! theme_field('image', 'post_ads_image2', 'Post ADS 2') !!}
+
+            {!! theme_field('text', 'post_ads_url3', 'Post URL 3') !!}
+            {!! theme_field('image', 'post_ads_image3', 'Post ADS 3') !!}
 
         </div>
         <div id="contactpage" class="tab-pane">

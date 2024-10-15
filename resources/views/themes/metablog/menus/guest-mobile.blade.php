@@ -24,7 +24,7 @@
                             stroke-linecap="round" />
                     </svg>
                 </div>
-                {{ menu('authenticated-menu', 'authenticated_mobile_menu') }}
+                {{ menu('guest-menu', 'guest_mobile_menu') }}
 
             </div>
         </div>

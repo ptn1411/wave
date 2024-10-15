@@ -48,41 +48,56 @@
                 srcset="{{ $post->image() }}">
 
         </div>
+
         <div class="flex items-center justify-center my-8 font-work">
-            <div class="py-4 bg-base-content/10 text-base-content/60 text-center rounded-xl w-11/12">
-                <p class="text-sm">Advertisement</p>
-                <h6 class="text-xl font-semibold">You can place ads</h6>
-                <p class="text-lg">750x100</p>
+            @if (theme('home_ads_image'))
+            <div class="py-4 rounded-xl">
+                <a href="{{ theme('home_ads_url') }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ Voyager::image(theme('home_ads_image')) }}" alt="Advertisement"
+                        style="width: 750px; height: 100px;" class="mx-auto my-4">
+                </a>
+
             </div>
+            @endif
         </div>
         <div class="prose max-w-4xl mx-auto font-serif">
             {!! $post->body !!}
         </div>
         <div class="flex items-center justify-center my-8 font-work">
-            <div class="py-4 bg-base-content/10 text-base-content/60 text-center rounded-xl w-11/12">
-                <p class="text-sm">Advertisement</p>
-                <h6 class="text-xl font-semibold">You can place ads</h6>
-                <p class="text-lg">750x100</p>
+            @if (theme('home_ads_image2'))
+            <div class="py-4 rounded-xl">
+                <a href="{{ theme('home_ads_url2') }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ Voyager::image(theme('home_ads_image2')) }}" alt="Advertisement"
+                        style="width: 750px; height: 100px;" class="mx-auto my-4">
+                </a>
+
             </div>
+            @endif
         </div>
     </div>
     <div class="col-span-12 lg:col-span-4 flex flex-col gap-5 justify-center order-last lg:order-none">
         @include('theme::partials.home-post-latest-sidebar')
         @include('theme::partials.home-post-category-sidebar')
-        <div
-            class="grid items-center justify-center bg-base-content/10 rounded-xl min-h-[360px] max-w-[250px] w-full mx-auto">
-            <div class="text-base-content/60 text-center font-work">
-                <p class="text-sm">Advertisement</p>
-                <p class="text-xl font-semibold">You can place ads</p>
-                <p class="text-lg">250x360</p>
-            </div>
+        @if (theme('home_ads_image2'))
+        <div class="grid items-center justify-center rounded-xl min-h-[360px] max-w-[250px] w-full mx-auto">
+            <a href="{{ theme('home_ads_url3') }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ Voyager::image(theme('home_ads_image3')) }}" alt="Advertisement"
+                    style="width: 250px; height: 360px;" class="mx-auto my-4">
+            </a>
         </div>
+        @endif
     </div>
 </article>
-<button
-    class="scroll-to-top fixed bottom-16 right-5 w-12 h-12 bg-black text-white border-none rounded-full cursor-pointer z-1000 flex justify-center items-center shadow hover:bg-gray-600">
-    ↑
-</button>
+<div x-data>
+    <button @click="window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })"
+        class="scroll-to-top fixed bottom-16 right-5 w-12 h-12 bg-black text-white border-none rounded-full cursor-pointer z-1000 flex justify-center items-center shadow hover:bg-gray-600">
+        ↑
+    </button>
+</div>
+
 <div class="max-w-4xl mx-auto mt-6 pb-20">
     <div id="disqus_thread" class="disqus-comments bg-base-100 p-4 rounded shadow-md"></div>
     <script>

@@ -5,10 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Link;
 
 class Tag extends Model
 {
     use HasFactory;
+    protected $table = 'tags';
+    protected $fillable = [
+        'name',
+    ];
+    public function links()
+    {
+        return $this->belongsToMany(Link::class, 'link_tags', 'tag_id', 'link_id');
+    }
 
     public function scopeCurrentUser($query)
     {

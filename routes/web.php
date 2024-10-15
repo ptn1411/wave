@@ -23,6 +23,10 @@ Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('links', '\App\Http\Controllers\LinkController@add');
+    Route::post('collections', '\App\Http\Controllers\CollectionController@add');
+    Route::post('tags', '\App\Http\Controllers\TagController@add');
+});
 // Wave routes
 Wave::routes();

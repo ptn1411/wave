@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="max-w-4xl px-5 mx-auto mt-44 lg:px-0">
+<div class="max-w-4xl px-5 mx-auto mt-36 lg:px-0">
     <a href="{{ route('wave.dashboard') }}"
         class="flex items-center mb-6 font-mono text-sm font-bold leading-tight cursor-pointer text-wave-500">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"

@@ -156,7 +156,42 @@
         };
     }
 </script>
+<script>
+    function draggableButton() {
+        return {
+            position: { x: 100, y: 100 }, // Vị trí khởi đầu
+            isDragging: false,
+            startDrag(event) {
+                this.isDragging = true;
+                const offsetX = event.clientX - this.position.x;
+                const offsetY = event.clientY - this.position.y;
 
+                const moveHandler = (moveEvent) => {
+                    if (this.isDragging) {
+                        this.position.x = moveEvent.clientX - offsetX;
+                        this.position.y = moveEvent.clientY - offsetY;
+                    }
+                };
+
+                const stopHandler = () => {
+                    this.isDragging = false;
+                    localStorage.setItem('buttonPosition', JSON.stringify(this.position)); // Lưu vị trí vào local storage
+                    document.removeEventListener('mousemove', moveHandler);
+                    document.removeEventListener('mouseup', stopHandler);
+                };
+
+                document.addEventListener('mousemove', moveHandler);
+                document.addEventListener('mouseup', stopHandler);
+            },
+            loadPosition() {
+                const savedPosition = localStorage.getItem('buttonPosition');
+                if (savedPosition) {
+                    this.position = JSON.parse(savedPosition);
+                }
+            }
+        };
+    }
+</script>
 @yield('javascript')
 <script src="{{ asset('themes/' . $theme->folder . '/js/app.js') }}"></script>
 @yield('javascripttoast')
