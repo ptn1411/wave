@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::post('links', '\App\Http\Controllers\LinkController@add');
+    Route::post('links/search', '\App\Http\Controllers\LinkController@search');
     Route::post('collections', '\App\Http\Controllers\CollectionController@add');
     Route::post('tags', '\App\Http\Controllers\TagController@add');
 });

@@ -34,4 +34,20 @@ class LinkController extends Controller
 
         return redirect()->back()->with(['message' => 'Your create new link', 'message_type' => 'success']);
     }
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+
+        // Search in the title and body columns from the posts table
+        $links = Link::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('textContent', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->orWhere('url', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return response()->json(['success' => true, 'data' => $links], 200);
+    }
 }

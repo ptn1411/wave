@@ -47,6 +47,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('themes/' . $theme->folder . '/css/app.css') }}" rel="stylesheet">
+    @yield('stylesheet')
 </head>
 
 <body x-data="draggableButton()" x-init="loadPosition()">
