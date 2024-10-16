@@ -1,0 +1,39 @@
+{
+  "name": "link",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node  dist/worker.js",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.7.5",
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.7",
+    "prisma": "^5.20.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.670.0",
+    "@mozilla/readability": "^0.5.0",
+    "@prisma/client": "^5.21.0",
+    "@ptndev/json": "^1.0.5",
+    "axios": "^1.7.7",
+    "dompurify": "^3.1.7",
+    "dotenv": "^16.4.5",
+    "jimp": "0.22.10",
+    "jsdom": "^22.1.0",
+    "node-fetch": "^3.3.2",
+    "ormjson": "^0.0.7",
+    "playwright": "^1.48.0",
+    "socks-proxy-agent": "^8.0.4"
+  },
+  "volta": {
+    "node": "20.18.0"
+  }
+}

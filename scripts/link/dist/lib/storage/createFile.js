@@ -1,0 +1,30 @@
+import { PutObjectCommand } from "@aws-sdk/client-s3";
+import fs from "fs";
+import path from "path";
+import s3Client from "./s3Client.js";
+export default async function createFile({ filePath, data, isBase64, }) {
+    if (s3Client) {
+        const bucketParams = {
+            Bucket: process.env.SPACES_BUCKET_NAME,
+            Key: filePath,
+            Body: isBase64 ? Buffer.from(data, "base64") : data,
+        };
+        try {
+            await s3Client.send(new PutObjectCommand(bucketParams));
+            return true;
+        }
+        catch (err) {
+            console.log("Error", err);
+            return false;
+        }
+    }
+    else {
+        const storagePath = process.env.STORAGE_FOLDER || "data";
+        const creationPath = path.join(process.cwd(), storagePath + "/" + filePath);
+        fs.writeFile(creationPath, data, isBase64 ? "base64" : {}, function (err) {
+            if (err)
+                console.log(err);
+        });
+        return true;
+    }
+}

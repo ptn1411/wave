@@ -26,10 +26,7 @@ class Link extends Model
         'importDate'
 
     ];
-    public function image()
-    {
-        return Voyager::image($this->image);
-    }
+
 
     public function collections()
     {
