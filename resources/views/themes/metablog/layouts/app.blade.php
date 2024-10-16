@@ -60,7 +60,7 @@
 
     @if (config('wave.dev_bar'))
     @include('theme::partials.dev_bar')
-    @endif
+
 
     @if (!auth()->guest())
     <div id="draggable-button" x-ref="button" x-on:mousedown="startDrag($event)"
@@ -187,6 +187,7 @@
 
     </div>
 
+    @endif
     @endif
     <!-- Full Screen Loader -->
     <div id="fullscreenLoader"

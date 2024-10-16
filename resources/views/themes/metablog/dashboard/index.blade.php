@@ -62,10 +62,10 @@
                             <template x-for="link in $store.dataStore.links" :key="link.id">
                                 <div class="card bg-base-100 w-96 shadow-xl">
                                     <figure>
-                                        <template x-if="link.image">
-                                            <img :src="link.image" :alt="link.name" />
+                                        <template x-if="link.preview">
+                                            <img :src="`/storage/${link.preview}`" :alt="link.name" />
                                         </template>
-                                        <template x-if="!link.image">
+                                        <template x-if="!link.preview">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round"
@@ -87,7 +87,7 @@
                                         </div>
 
                                         <div class="justify-start">
-                                            <button @click="fullscreenModal=true; imageUrl=link.preview"
+                                            <button @click="fullscreenModal=true; imageUrl=link.image"
                                                 class="btn btn-outline btn-square">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -207,7 +207,8 @@
             </button>
 
             <div class="flex items-center justify-center w-full h-full">
-                <img :src="imageUrl" alt="Preview Image" class="max-w-full max-h-full object-contain" />
+                <img :src="`/storage/${imageUrl}`" alt="Preview Image" class="max-w-full max-h-full object-contain" />
+
             </div>
         </div>
     </template>
